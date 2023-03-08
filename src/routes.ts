@@ -11,6 +11,7 @@ import { ListTreeCategoriesController } from './controllers/category/ListTreeCat
 import { AuthUserController } from './controllers/user/AuthUserController';
 import { CreateUserController } from './controllers/user/CreateUserController';
 import { DetailUserController } from './controllers/user/DetailUserController';
+import { isAdmin } from './middlewares/isAdmin';
 
 import { isAuthenticated } from './middlewares/isAuthenticated';
 
