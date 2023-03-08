@@ -14,7 +14,15 @@ export class CreateUserService {
 
     async execute({name, email, password, admin}: UserRequest) {
 
-        if (!email) throw new Error('Email incorrect');
+        function validateEmail() {
+
+            const regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; 
+    
+            return regex.test(email) ;
+
+        }
+
+        if (!email || !validateEmail()) throw new Error('Email incorrect');
 
         const userAlreadyExists = await prisma.user.findFirst({
             where: {
