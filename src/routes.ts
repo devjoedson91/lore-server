@@ -1,6 +1,8 @@
 import { Router } from 'express';
 
 import { CreateArticleController } from './controllers/article/CreateArticleController';
+import { ListArticlesByCategoryController } from './controllers/article/ListArticlesByCategoryController';
+import { listArticlesController } from './controllers/article/ListArticlesController';
 
 import { CreateCategoryController } from './controllers/category/CreateCategoryController';
 import { ListCategoriesWithPathController } from './controllers/category/ListCategoriesWithPathController';
@@ -23,3 +25,5 @@ router.get('/category/path', isAuthenticated, new ListCategoriesWithPathControll
 router.get('/category/tree', isAuthenticated, new ListTreeCategoriesController().handle);
 
 router.post('/article', isAuthenticated, new CreateArticleController().handle);
+router.get('/articles', isAuthenticated, new listArticlesController().handle);
+router.get('/articles/category/:category_id', isAuthenticated, new ListArticlesByCategoryController().handle);
