@@ -26,7 +26,8 @@ export class AuthUserService {
         const token = sign(
             {
                 name: user.name,
-                email: user.email
+                email: user.email,
+                admin: user.admin
             },
             process.env.JWT_SECRET,
             {

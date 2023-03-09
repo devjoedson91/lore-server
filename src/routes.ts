@@ -17,7 +17,8 @@ import { isAuthenticated } from './middlewares/isAuthenticated';
 
 export const router = Router();
 
-router.post('/users', new CreateUserController().handle);
+router.post('/signup', new CreateUserController().handle);
+router.post('/users', isAuthenticated, isAdmin, new CreateUserController().handle);
 router.post('/session', new AuthUserController().handle);
 router.get('/userinfo', isAuthenticated, new DetailUserController().handle);
 

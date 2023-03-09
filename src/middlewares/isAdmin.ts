@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from "express";
-import { AuthUserService } from "../services/user/AuthUserService";
+import { DetailUserService } from "../services/user/DetailUserService";
 
 export async function isAdmin(req: Request, res: Response, next: NextFunction) {
 
-    const authUserService = new AuthUserService();
+    const authUserService = new DetailUserService();
 
-    const user = await authUserService.execute(req.body);
+    const user = await authUserService.execute(req.user_id);
 
     if (user.admin) { 
         
